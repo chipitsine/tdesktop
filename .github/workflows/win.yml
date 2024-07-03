@@ -157,7 +157,6 @@ jobs:
       - name: Free up some disk space.
         run: |
           cd %TBUILD%
-          del /S Libraries\*.pdb
           del /S Libraries\*.pch
           del /S Libraries\*.obj
 
@@ -172,7 +171,6 @@ jobs:
           %TDESKTOP_BUILD_API% ^
           -D DESKTOP_APP_DISABLE_AUTOUPDATE=OFF ^
           -D DESKTOP_APP_DISABLE_CRASH_REPORTS=OFF ^
-          -D DESKTOP_APP_NO_PDB=ON ^
           %TDESKTOP_BUILD_DEFINE%
 
           cmake --build ..\out --config Debug --parallel
