@@ -5043,3 +5043,4 @@ Added formatting shortcuts. Select text and use:
 - Added «Delete Message» and «Forward Message» items to context menus.
 - No PUSH-notifications are sent to your mobile phone from the currently active Telegram Win conversation.
 - Fixed issue with broken long links in messages copied to clipboard.
+
