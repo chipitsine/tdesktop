@@ -228,7 +228,9 @@ jobs:
           set OUT=%TBUILD%\%REPO_NAME%\out\Debug
           mkdir artifact
           move %OUT%\Telegram.exe artifact/
+          move %OUT%\Telegram.pdb artifact/
           move %OUT%\Updater.exe artifact/
+          move %OUT%\Updater.pdb artifact/
       - uses: actions/upload-artifact@v7
         name: Upload artifact.
         if: (env.UPLOAD_ARTIFACT == 'true') || (github.ref == 'refs/heads/nightly')
