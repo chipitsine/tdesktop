@@ -5626,13 +5626,12 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_search_filter_group" = "Group chats";
 "lng_search_filter_channel" = "Channels";
 "lng_search_sponsored_button" = "Ad ⋮";
-
-// Screen reader strings for chat list.
 "lng_sr_chat_channel" = "Channel";
 "lng_sr_chat_group" = "Group";
 "lng_sr_chat_bot" = "Bot";
 "lng_sr_chat_topic" = "Topic";
 "lng_sr_chat_folder" = "Folder";
+"lng_sr_chat_hashtag" = "Hashtag";
 "lng_sr_chat_service" = "Service Notifications";
 "lng_sr_chat_verified" = "Verified";
 "lng_sr_chat_scam" = "Scam";
@@ -5658,6 +5657,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_sr_chat_subscribed" = "Subscribed";
 "lng_sr_chat_forwarded" = "Forwarded";
 "lng_sr_chat_story_reply" = "Story reply";
+
 "lng_sr_chat_column_type" = "Type";
 "lng_sr_chat_column_name" = "Name";
 "lng_sr_chat_column_warning" = "Warning";
@@ -5681,9 +5681,62 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_sr_chat_column_closed" = "Closed";
 "lng_sr_chat_column_forward" = "Forward";
 "lng_sr_chat_column_folders" = "Folders";
+
+"lng_sr_message_list" = "Messages";
 "lng_sr_from_me" = "Me";
 "lng_sr_message_seen" = "Seen";
 "lng_sr_message_not_seen" = "Not seen";
+"lng_sr_message_played" = "Played";
+"lng_sr_message_not_played" = "Not played";
+"lng_sr_message_not_downloaded" = "Not downloaded";
+"lng_sr_message_downloading" = "Downloading";
+"lng_sr_message_reply_to" = "In reply to {name}: {text}";
+"lng_sr_message_edited" = "Edited";
+"lng_sr_message_custom_emoji" = "Custom emoji {emoji}";
+
+"lng_sr_message_column_media_type" = "Media type";
+"lng_sr_message_column_artist" = "Artist";
+"lng_sr_message_column_title" = "Title";
+"lng_sr_message_column_filename" = "Filename";
+"lng_sr_message_column_duration" = "Duration";
+"lng_sr_message_column_dimensions" = "Dimensions";
+"lng_sr_message_column_file_size" = "File size";
+"lng_sr_message_column_signature" = "Signature";
+"lng_sr_message_column_web_site" = "Website";
+"lng_sr_message_column_web_title" = "Link title";
+"lng_sr_message_column_web_description" = "Link description";
+"lng_sr_message_column_poll_question" = "Poll question";
+"lng_sr_message_column_poll_status" = "Poll status";
+"lng_sr_message_column_contact_name" = "Contact name";
+"lng_sr_message_column_contact_phone" = "Contact phone";
+"lng_sr_message_column_location" = "Location";
+"lng_sr_message_column_sticker_emoji" = "Sticker emoji";
+"lng_sr_message_column_game_title" = "Game title";
+"lng_sr_message_column_game_description" = "Game description";
+"lng_sr_message_column_invoice_title" = "Invoice title";
+"lng_sr_message_column_invoice_amount" = "Invoice amount";
+"lng_sr_message_column_spoiler" = "Spoiler";
+"lng_sr_message_column_dice" = "Dice";
+"lng_sr_message_column_giveaway" = "Giveaway";
+"lng_sr_message_column_gift" = "Gift";
+"lng_sr_message_column_todo_title" = "Todo title";
+"lng_sr_message_column_todo_items" = "Todo items";
+"lng_sr_message_column_factcheck" = "Fact check";
+"lng_sr_message_column_forward_date" = "Forward date";
+"lng_sr_message_column_forward_author" = "Forward author";
+"lng_sr_message_column_paid_reactions" = "Paid reactions";
+
+"lng_sr_message_spoiler" = "Hidden media";
+"lng_sr_message_todo_completed" = "Completed";
+"lng_sr_message_todo_not_completed" = "Not completed";
+"lng_sr_message_gift_premium#one" = "Premium gift, {count} day";
+"lng_sr_message_gift_premium#other" = "Premium gift, {count} days";
+"lng_sr_message_gift_credits#one" = "Star gift, {count} star";
+"lng_sr_message_gift_credits#other" = "Star gift, {count} stars";
+"lng_sr_message_paid_content" = "Paid content";
+"lng_sr_message_live_location" = "Live location";
+"lng_sr_message_invoice_paid" = "Paid";
+"lng_sr_message_invoice_unpaid" = "Unpaid";
 
 "lng_media_save_progress" = "{ready} of {total} {mb}";
 "lng_mediaview_save_as" = "Save As...";
