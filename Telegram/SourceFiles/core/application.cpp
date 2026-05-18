@@ -988,9 +988,8 @@ void Application::checkLocalTime() {
 		if (proxySettings.isEnabled()
 			&& proxySettings.selected().type == MTP::ProxyData::Type::Mtproto) {
 			for (const auto &entry : _domain->accounts()) {
-				const auto account = entry.second;
-				if (account->sessionExists()) {
-					account->mtp().restart();
+				if (entry.second->sessionExists()) {
+					entry.second->mtp().restart();
 				}
 			}
 		}
