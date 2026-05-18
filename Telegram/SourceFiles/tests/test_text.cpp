@@ -27,7 +27,7 @@ QString name() {
 	return u"text"_q;
 }
 
-void testShouldRestartMtprotoProxyAfterTimeAdjust() {
+void TestShouldRestartMtprotoProxyAfterTimeAdjust() {
 	auto proxySettings = Core::SettingsProxy();
 	Assert(!Core::ShouldRestartMtprotoProxyAfterTimeAdjust(proxySettings));
 
@@ -39,6 +39,9 @@ void testShouldRestartMtprotoProxyAfterTimeAdjust() {
 		.password = u"00112233445566778899aabbccddeeff"_q,
 	});
 	Assert(Core::ShouldRestartMtprotoProxyAfterTimeAdjust(proxySettings));
+	proxySettings.setSettings(MTP::ProxyData::Settings::Disabled);
+	Assert(!Core::ShouldRestartMtprotoProxyAfterTimeAdjust(proxySettings));
+	proxySettings.setSettings(MTP::ProxyData::Settings::Enabled);
 
 	proxySettings.setSelected(MTP::ProxyData{
 		.type = MTP::ProxyData::Type::Socks5,
@@ -57,7 +60,7 @@ void testShouldRestartMtprotoProxyAfterTimeAdjust() {
 }
 
 void test(not_null<Ui::RpWindow*> window, not_null<Ui::RpWidget*> body) {
-	testShouldRestartMtprotoProxyAfterTimeAdjust();
+	TestShouldRestartMtprotoProxyAfterTimeAdjust();
 
 	auto text = new Ui::Text::String(scale(64));
 
