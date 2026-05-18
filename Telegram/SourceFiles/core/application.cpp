@@ -984,6 +984,15 @@ void Application::checkLocalTime() {
 		base::Timer::Adjust();
 		base::ConcurrentTimerEnvironment::Adjust();
 		base::unixtime::http_invalidate();
+		const auto proxy = settings().proxy().selected();
+		if (settings().proxy().isEnabled()
+			&& proxy.type == MTP::ProxyData::Type::Mtproto) {
+			for (const auto &[index, account] : _domain->accounts()) {
+				if (account->sessionExists()) {
+					account->mtp().restart();
+				}
+			}
+		}
 	}
 	if (const auto session = maybePrimarySession()) {
 		session->updates().checkLastUpdate(adjusted);
