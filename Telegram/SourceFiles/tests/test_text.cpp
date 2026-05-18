@@ -27,7 +27,7 @@ QString name() {
 	return u"text"_q;
 }
 
-void TestShouldRestartMtprotoProxyAfterTimeAdjust() {
+void testShouldRestartMtprotoProxyAfterTimeAdjust() {
 	auto proxySettings = Core::SettingsProxy();
 	Assert(!Core::ShouldRestartMtprotoProxyAfterTimeAdjust(proxySettings));
 
@@ -60,7 +60,7 @@ void TestShouldRestartMtprotoProxyAfterTimeAdjust() {
 }
 
 void test(not_null<Ui::RpWindow*> window, not_null<Ui::RpWidget*> body) {
-	TestShouldRestartMtprotoProxyAfterTimeAdjust();
+	testShouldRestartMtprotoProxyAfterTimeAdjust();
 
 	auto text = new Ui::Text::String(scale(64));
 
