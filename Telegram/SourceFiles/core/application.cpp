@@ -28,6 +28,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 #include "core/local_url_handlers.h"
 #include "core/launcher.h"
 #include "core/proxy_rotation_manager.h"
+#include "core/proxy_reconnect_utils.h"
 #include "core/ui_integration.h"
 #include "chat_helpers/emoji_keywords.h"
 #include "chat_helpers/stickers_emoji_image_loader.h"
@@ -984,6 +985,14 @@ void Application::checkLocalTime() {
 		base::Timer::Adjust();
 		base::ConcurrentTimerEnvironment::Adjust();
 		base::unixtime::http_invalidate();
+		const auto &proxySettings = settings().proxy();
+		if (ShouldRestartMtprotoProxyAfterTimeAdjust(proxySettings)) {
+			for (const auto &entry : _domain->accounts()) {
+				if (entry.second->sessionExists()) {
+					entry.second->mtp().restart();
+				}
+			}
+		}
 	}
 	if (const auto session = maybePrimarySession()) {
 		session->updates().checkLastUpdate(adjusted);
