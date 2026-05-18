@@ -984,10 +984,11 @@ void Application::checkLocalTime() {
 		base::Timer::Adjust();
 		base::ConcurrentTimerEnvironment::Adjust();
 		base::unixtime::http_invalidate();
-		const auto proxy = settings().proxy().selected();
-		if (settings().proxy().isEnabled()
-			&& proxy.type == MTP::ProxyData::Type::Mtproto) {
-			for (const auto &[index, account] : _domain->accounts()) {
+		const auto &proxySettings = settings().proxy();
+		if (proxySettings.isEnabled()
+			&& proxySettings.selected().type == MTP::ProxyData::Type::Mtproto) {
+			for (const auto &entry : _domain->accounts()) {
+				const auto account = entry.second;
 				if (account->sessionExists()) {
 					account->mtp().restart();
 				}
