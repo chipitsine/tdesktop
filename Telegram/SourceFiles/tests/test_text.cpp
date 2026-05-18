@@ -9,6 +9,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 
 #include "base/invoke_queued.h"
 #include "base/integration.h"
+#include "core/proxy_reconnect_utils.h"
 #include "ui/effects/animations.h"
 #include "ui/text/text.h"
 #include "ui/text/text_utilities.h"
@@ -26,7 +27,38 @@ QString name() {
 	return u"text"_q;
 }
 
+void testMtprotoProxyReconnectDecision() {
+	auto proxySettings = Core::SettingsProxy();
+	Assert(!Core::ShouldRestartMtprotoProxyAfterTimeAdjust(proxySettings));
+
+	proxySettings.setSettings(MTP::ProxyData::Settings::Enabled);
+	proxySettings.setSelected(MTP::ProxyData{
+		.type = MTP::ProxyData::Type::Mtproto,
+		.host = u"example.com"_q,
+		.port = 443,
+		.password = u"00112233445566778899aabbccddeeff"_q,
+	});
+	Assert(Core::ShouldRestartMtprotoProxyAfterTimeAdjust(proxySettings));
+
+	proxySettings.setSelected(MTP::ProxyData{
+		.type = MTP::ProxyData::Type::Socks5,
+		.host = u"example.com"_q,
+		.port = 1080,
+	});
+	Assert(!Core::ShouldRestartMtprotoProxyAfterTimeAdjust(proxySettings));
+
+	proxySettings.setSelected(MTP::ProxyData{
+		.type = MTP::ProxyData::Type::Mtproto,
+		.host = u"example.com"_q,
+		.port = 443,
+		.password = u"bad"_q,
+	});
+	Assert(!Core::ShouldRestartMtprotoProxyAfterTimeAdjust(proxySettings));
+}
+
 void test(not_null<Ui::RpWindow*> window, not_null<Ui::RpWidget*> body) {
+	testMtprotoProxyReconnectDecision();
+
 	auto text = new Ui::Text::String(scale(64));
 
 	const auto like = QString::fromUtf8("\xf0\x9f\x91\x8d");
