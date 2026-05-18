@@ -985,8 +985,10 @@ void Application::checkLocalTime() {
 		base::ConcurrentTimerEnvironment::Adjust();
 		base::unixtime::http_invalidate();
 		const auto &proxySettings = settings().proxy();
+		const auto selectedProxy = proxySettings.selected();
 		if (proxySettings.isEnabled()
-			&& proxySettings.selected().type == MTP::ProxyData::Type::Mtproto) {
+			&& selectedProxy
+			&& selectedProxy.type == MTP::ProxyData::Type::Mtproto) {
 			for (const auto &entry : _domain->accounts()) {
 				if (entry.second->sessionExists()) {
 					entry.second->mtp().restart();
