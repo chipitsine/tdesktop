@@ -15,7 +15,7 @@ namespace Core {
 		const SettingsProxy &proxySettings) {
 	const auto selectedProxy = proxySettings.selected();
 	return proxySettings.isEnabled()
-		&& selectedProxy
+		&& selectedProxy.valid()
 		&& selectedProxy.type == MTP::ProxyData::Type::Mtproto;
 }
 
